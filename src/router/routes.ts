@@ -3,8 +3,15 @@ import { RouteConfig } from 'vue-router'
 const routes: RouteConfig[] = [
   {
     path: '/',
-    component: () => import('layouts/MyLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Index.vue') }]
+    component: () => import('layouts/Layout1.vue'),
+    children: [
+      { path: '', component: () => import('pages/Index.page.vue') },
+      {
+        path: 'school-intro',
+        name: 'school-intro',
+        component: () => import('pages/SchoolIntro.page.vue')
+      }
+    ]
   }
 ]
 

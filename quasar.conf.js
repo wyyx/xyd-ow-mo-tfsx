@@ -1,11 +1,10 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
-
-module.exports = function (ctx) {
+module.exports = function(ctx) {
   return {
     // Quasar looks for *.js files by default
     sourceFiles: {
@@ -15,7 +14,7 @@ module.exports = function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
-    boot: [],
+    boot: ['vconsole.boot'],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: ['app.scss'],
@@ -93,12 +92,10 @@ module.exports = function (ctx) {
           options: {
             formatter: require('eslint').CLIEngine.getFormatter('stylish')
           }
-        });
+        })
 
         // plugins
         cfg.plugins.push(new BundleAnalyzerPlugin())
-
-
 
         // optimization
         cfg.optimization.splitChunks = {}
@@ -140,31 +137,32 @@ module.exports = function (ctx) {
         orientation: 'portrait',
         background_color: '#ffffff',
         theme_color: '#027be3',
-        icons: [{
-          src: 'statics/icons/icon-128x128.png',
-          sizes: '128x128',
-          type: 'image/png'
-        },
-        {
-          src: 'statics/icons/icon-192x192.png',
-          sizes: '192x192',
-          type: 'image/png'
-        },
-        {
-          src: 'statics/icons/icon-256x256.png',
-          sizes: '256x256',
-          type: 'image/png'
-        },
-        {
-          src: 'statics/icons/icon-384x384.png',
-          sizes: '384x384',
-          type: 'image/png'
-        },
-        {
-          src: 'statics/icons/icon-512x512.png',
-          sizes: '512x512',
-          type: 'image/png'
-        }
+        icons: [
+          {
+            src: 'statics/icons/icon-128x128.png',
+            sizes: '128x128',
+            type: 'image/png'
+          },
+          {
+            src: 'statics/icons/icon-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: 'statics/icons/icon-256x256.png',
+            sizes: '256x256',
+            type: 'image/png'
+          },
+          {
+            src: 'statics/icons/icon-384x384.png',
+            sizes: '384x384',
+            type: 'image/png'
+          },
+          {
+            src: 'statics/icons/icon-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
         ]
       }
     },
@@ -200,5 +198,5 @@ module.exports = function (ctx) {
         // appId: 'xyd-ow-mo-tfsx'
       }
     }
-  };
-};
+  }
+}
